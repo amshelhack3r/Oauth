@@ -2,6 +2,7 @@
   "name": "oauthgoogle",
   "version": "0.0.0",
   "private": true,
+  "main": "server.js",
   "scripts": {
     "start": "nodemon start ./bin/www"
   },
