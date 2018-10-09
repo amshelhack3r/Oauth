@@ -9,5 +9,6 @@ module.exports = {
     clientID: "587193768365731",
     clientSecret: "b28f2b8fb72886257fd89fd9303e3132",
     callback: "/oauth/auth/cb2"
-  }
+  },
+  mongoURI: "mongodb://amshel:xanthosis1@ds159020.mlab.com:59020/oauth_node"
 };
