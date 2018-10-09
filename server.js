@@ -8,8 +8,24 @@ const strategy = require("./config/passport");
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const session = require("express-session");
+const mongoose = require("mongoose");
+const keys = require("./config/keys");
 
 const app = express();
+
+mongoose
+  .connect(
+    keys.mongoURI,
+    {
+      useNewUrlParser: true
+    }
+  )
+  .then(() => {
+    console.log("Connected to mlabs");
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -53,6 +69,7 @@ app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
+  res.locals.user = req.user || null;
 
   // render the error page
   res.status(err.status || 500);
