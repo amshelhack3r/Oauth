@@ -33,5 +33,7 @@ router.get(
   }
 );
 
-router.get("/success", (req, res) => {});
+router.get("/success", (req, res) => {
+  res.render("success", { user: req.user });
+});
 module.exports = router;
